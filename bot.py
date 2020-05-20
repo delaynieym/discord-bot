@@ -5,9 +5,15 @@ class MyClient(discord.Client):
     async def on_ready(self):
         print('Logged on as', self.user)
     async def on_message(self, message):
-        r = random.randint(1,3)
-        if r == 1 and not (str(message.author.id) == "207686242874294272"):
+        print("message received")
+        if (message.channel.id != 530491424529973260) and (message.channel.id != 675993960178647040) and (message.channel.id != 569586147160883241):
+            print("not allowed")
+            print(message.channel.id)
+            return
+        print("allowed")
+        r = random.randint(1,20)
+        if r == 1:
             for em in emojis:
                 await message.add_reaction(em)
 client = MyClient()
-client.run('NjkyOTQ4MDMwMDA0OTIwNDEw.XsR9hw.oAWXk_lbC5eRKeSvKXllBgqSwSA')
+client.run('You\'re token here')
